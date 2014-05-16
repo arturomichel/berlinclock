@@ -50,6 +50,11 @@ public class BerlinHeuer {
 	public void setProvided(boolean provided) {
 		this.provided = provided;
 	}
+
+	@Override
+	public String toString() {
+		return "BerlinHeuer [time=" + time + ", berlin=" + berlin + ", provided=" + provided + "]";
+	}
 	
 	
 }

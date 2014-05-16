@@ -1,9 +1,9 @@
 package com.tests;
 
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
+import berlin.clock.BerlinHeuer;
 import berlin.clock.BerlinHeuerParser;
 
 public class BerlinHeuerConverterTest {
@@ -57,5 +57,16 @@ public class BerlinHeuerConverterTest {
 	public void testBerlinSeconds() {
 		Assert.assertEquals(1, BerlinHeuerParser.getSeconds(0));
 		Assert.assertEquals(0, BerlinHeuerParser.getSeconds(59));
+	}
+	
+	@Test
+	public void testBerlinTimeString(){
+		BerlinHeuer expected1 = new BerlinHeuer(VALID_TIME_1, "O RROO RRRO YYROOOOOOOO YYOO", false);
+		BerlinHeuer expected2 = new BerlinHeuer(VALID_TIME_2, "O RRRR RRRO YYRYYRYYRYY YYYY", false);
+		BerlinHeuer expected3 = new BerlinHeuer(VALID_TIME_3, "Y RRRR RRRR OOOOOOOOOOO OOOO", false);
+		
+		Assert.assertEquals(expected1.toString(), BerlinHeuerParser.toBerlinString(VALID_TIME_1).toString());
+		Assert.assertEquals(expected2.toString(), BerlinHeuerParser.toBerlinString(VALID_TIME_2).toString());
+		Assert.assertEquals(expected3.toString(), BerlinHeuerParser.toBerlinString(VALID_TIME_3).toString());
 	}
 }

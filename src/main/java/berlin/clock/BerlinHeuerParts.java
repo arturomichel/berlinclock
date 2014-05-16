@@ -1,23 +1,31 @@
 package berlin.clock;
 
-public enum BerlinTimeParts {
-
-	HOURS_5(false, 4, 5),
-	HOURS_1(false, 4, 1),
-	MIN_5(true,11,5),
-	MIN_1(false,4,5),
-	SEC(false,1,1);
+public enum BerlinHeuerParts {
+	
+	HOURS_5(false, 4, Colours.RED, Colours.RED, Colours.OFF),
+	HOURS_1(false, 4, Colours.RED, Colours.RED, Colours.OFF),
+	MIN_5(true,11, Colours.YELLOW, Colours.RED, Colours.OFF),
+	MIN_1(false,4, Colours.YELLOW, Colours.YELLOW, Colours.OFF),
+	SEC(false,1, Colours.YELLOW, Colours.RED, Colours.OFF);
 	
 	private boolean markQuarters;
 	
 	private int padding;
 	
-	private int base;
+	private String onColour;
 
-	private BerlinTimeParts(boolean markQuarters, int padding, int base) {
+	private String quarterColour;
+	
+	private String offColour;
+	
+	
+	
+	private BerlinHeuerParts(boolean markQuarters, int padding, String onColour, String quarterColour, String offColour) {
 		this.markQuarters = markQuarters;
 		this.padding = padding;
-		this.base = base;
+		this.onColour = onColour;
+		this.quarterColour = quarterColour;
+		this.offColour = offColour;
 	}
 
 	public boolean isMarkQuarters() {
@@ -27,10 +35,22 @@ public enum BerlinTimeParts {
 	public int getPadding() {
 		return padding;
 	}
-
-	public int getBase() {
-		return base;
+	
+	public String getOnColour() {
+		return onColour;
 	}
-	
-	
+
+	public String getQuarterColour() {
+		return quarterColour;
+	}
+
+	public String getOffColour() {
+		return offColour;
+	}
+
+	public static final class Colours {
+		public static String YELLOW = "Y";
+		public static String RED = "R";
+		public static String OFF = "O";
+	}
 }

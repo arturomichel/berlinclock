@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import berlin.clock.BerlinHeuer;
-import berlin.clock.BerlinHeuerProvider;
+import berlin.clock.BerlinHeuerParser;
 
 @Path("berlinHeuer")
 public class BerlinHeuerService {
@@ -23,7 +23,7 @@ public class BerlinHeuerService {
 	@Consumes("application/json; charset=utf-8")
 	@Produces("application/json; charset=utf-8")
 	public Response toBerlin(@PathParam("time") String time){
-		BerlinHeuer berlin = BerlinHeuerProvider.toBerlinString(time);
+		BerlinHeuer berlin = BerlinHeuerParser.toBerlinString(time);
 		berlin.setProvided(true);
 		return Response.status(Status.OK).entity(berlin).build();
 		
@@ -36,7 +36,7 @@ public class BerlinHeuerService {
 	public Response getTime(){
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 		String time = sdf.format(new Date());
-		BerlinHeuer berlin = BerlinHeuerProvider.toBerlinString(time);
+		BerlinHeuer berlin = BerlinHeuerParser.toBerlinString(time);
 		berlin.setProvided(false);
 		return Response.status(Status.OK).entity(berlin).build();
 	}
