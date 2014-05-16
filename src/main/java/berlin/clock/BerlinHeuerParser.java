@@ -2,7 +2,7 @@ package berlin.clock;
 
 import berlin.clock.BerlinHeuer;
 
-public class BerlinHeuerProvider {
+public class BerlinHeuerParser {
 
 	private static String YELLOW = "Y";
 	private static String RED = "R";
