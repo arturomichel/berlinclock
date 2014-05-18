@@ -7,13 +7,13 @@ public class BerlinClock {
 
 	private String time;
 	
-	private String hours20;
+	private String hoursSet1;
 	
-	private String hours1;
+	private String hoursSet2;
 	
-	private String min5;
+	private String minSet1;
 	
-	private String min1;
+	private String minSet2;
 	
 	private String sec;
 	
@@ -22,13 +22,13 @@ public class BerlinClock {
 		super();
 	}
 
-	public BerlinClock(String time, String hours20, String hours1, String min5, String min1, String sec) {
+	public BerlinClock(String time, String hoursSet1, String hoursSet2, String minSet1, String minSet2, String sec) {
 		super();
 		this.time = time;
-		this.hours20 = hours20;
-		this.hours1 = hours1;
-		this.min5 = min5;
-		this.min1 = min1;
+		this.hoursSet1 = hoursSet1;
+		this.hoursSet2 = hoursSet2;
+		this.minSet1 = minSet1;
+		this.minSet2 = minSet2;
 		this.sec = sec;
 	}
 
@@ -47,46 +47,37 @@ public class BerlinClock {
 		this.time = time;
 	}
 
-
-	public String getHours20() {
-		return hours20;
+	public String getHoursSet1() {
+		return hoursSet1;
 	}
 
-
-	public void setHours20(String hours20) {
-		this.hours20 = hours20;
+	public void setHoursSet1(String hoursSet1) {
+		this.hoursSet1 = hoursSet1;
 	}
 
-
-	public String getHours1() {
-		return hours1;
+	public String getHoursSet2() {
+		return hoursSet2;
 	}
 
-
-	public void setHours1(String hours1) {
-		this.hours1 = hours1;
+	public void setHoursSet2(String hoursSet2) {
+		this.hoursSet2 = hoursSet2;
 	}
 
-
-	public String getMin5() {
-		return min5;
+	public String getMinSet1() {
+		return minSet1;
 	}
 
-
-	public void setMin5(String min5) {
-		this.min5 = min5;
+	public void setMinSet1(String minSet1) {
+		this.minSet1 = minSet1;
 	}
 
-
-	public String getMin1() {
-		return min1;
+	public String getMinSet2() {
+		return minSet2;
 	}
 
-
-	public void setMin1(String min1) {
-		this.min1 = min1;
+	public void setMinSet2(String minSet2) {
+		this.minSet2 = minSet2;
 	}
-
 
 	public String getSec() {
 		return sec;
@@ -99,8 +90,7 @@ public class BerlinClock {
 
 	@Override
 	public String toString() {
-		return "BerlinHeuer [time=" + time + ", hours20=" + hours20 + ", hours1=" + hours1 + ", min5=" + min5 + ", min1=" + min1 + ", sec=" + sec + "]";
+		return "BerlinClock [time=" + time + ", hoursSet1=" + hoursSet1 + ", hoursSet2=" + hoursSet2 + ", minSet1=" + minSet1 + ", minSet2=" + minSet2 + ", sec=" + sec + "]";
 	}
-
 	
 }

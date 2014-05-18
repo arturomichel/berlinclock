@@ -1,6 +1,5 @@
 package berlin.clock;
 
-import berlin.clock.BerlinClock;
 
 public class BerlinClockBuilder {
 
@@ -10,10 +9,10 @@ public class BerlinClockBuilder {
 		Integer[] hhmmss = parse(HHMMSS);
 		BerlinClock bh = new BerlinClock(HHMMSS);
 		
-		bh.setHours20(setLights(getUpperSet(hhmmss[0]), BerlinClockSets.HOURS_5));
-		bh.setHours1(setLights(getLowerSet(hhmmss[0]), BerlinClockSets.HOURS_1));
-		bh.setMin5(setLights(getUpperSet(hhmmss[1]), BerlinClockSets.MIN_5));
-		bh.setMin1(setLights(getLowerSet(hhmmss[1]), BerlinClockSets.MIN_1));
+		bh.setHoursSet1(setLights(getUpperSet(hhmmss[0]), BerlinClockSets.HOURS_5));
+		bh.setHoursSet2(setLights(getLowerSet(hhmmss[0]), BerlinClockSets.HOURS_1));
+		bh.setMinSet1(setLights(getUpperSet(hhmmss[1]), BerlinClockSets.MIN_5));
+		bh.setMinSet2(setLights(getLowerSet(hhmmss[1]), BerlinClockSets.MIN_1));
 		bh.setSec(setLights(getSeconds(hhmmss[2]), BerlinClockSets.SEC));
 		
 		return bh;
@@ -71,7 +70,7 @@ public class BerlinClockBuilder {
 		return iHHMMSS;
 	}
 
-	private static <T> void print(T ... s){
+	public static <T> void print(T ... s){
 		for(T t : s){
 			System.out.print(t+" ");
 		}
