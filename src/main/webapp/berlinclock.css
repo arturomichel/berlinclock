@@ -1,0 +1,27 @@
+body
+{
+background-color:white;width:100%;margin:0 auto;padding:0;overflow:hidden;resize:none;
+}
+
+#content{
+
+}
+
+.circle {
+	width: 20px;
+	height: 20px;
+	background: red;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.O {
+	background: grey;
+}
+.Y {
+	background: yellow;
+}
+.R {
+	background: red;
+}
