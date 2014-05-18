@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response.Status;
 import berlin.clock.BerlinClock;
 import berlin.clock.BerlinClockBuilder;
 
-@Path("berlinHeuer")
+@Path("berlinClock")
 public class BerlinClockService {
 
 	private static SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
@@ -24,7 +24,7 @@ public class BerlinClockService {
 	@Consumes("application/json; charset=utf-8")
 	@Produces("application/json; charset=utf-8")
 	public Response getTime(@QueryParam("time") String time){
-		if("".equals(time))
+		if(!"".equals(time))
 			time = sdf.format(new Date());
 		BerlinClock berlin = BerlinClockBuilder.build(time);
 		return Response.status(Status.OK).entity(berlin).build();
