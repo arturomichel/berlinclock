@@ -10,12 +10,15 @@ background-color:white;width:100%;margin:0 auto;padding:0;overflow:hidden;resize
 .circle {
 	width: 20px;
 	height: 20px;
-	background: red;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
+	float:left;
 }
-
+.row {
+	padding: 10px;
+	overflow: hidden;
+}
 .O {
 	background: grey;
 }

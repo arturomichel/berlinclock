@@ -7,19 +7,22 @@
 </head>
 <body>
 	<div id="content">
-		<div id="hoursSet1">
+		<div id="sec" class="row">
+			<div id="sec_0" class="circle"></div>
+		</div>
+		<div id="hoursSet1" class="row">
 			<div id="hoursSet1_0" class="circle"></div>
 			<div id="hoursSet1_1" class="circle"></div>
 			<div id="hoursSet1_2" class="circle"></div>
 			<div id="hoursSet1_3" class="circle"></div>
 		</div>
-		<div id="hoursSet2">
+		<div id="hoursSet2" class="row">
 			<div id="hoursSet2_0" class="circle"></div>
 			<div id="hoursSet2_1" class="circle"></div>
 			<div id="hoursSet2_2" class="circle"></div>
 			<div id="hoursSet2_3" class="circle"></div>
 		</div>
-		<div id="minSet1">
+		<div id="minSet1" class="row">
 			<div id="minSet1_0" class="circle"></div>
 			<div id="minSet1_1" class="circle"></div>
 			<div id="minSet1_2" class="circle"></div>
@@ -32,19 +35,15 @@
 			<div id="minSet1_9" class="circle"></div>
 			<div id="minSet1_10" class="circle"></div>
 		</div>	
-		<div id="minSet2">
+		<div id="minSet2" class="row">
 			<div id="minSet2_0" class="circle"></div>
 			<div id="minSet2_1" class="circle"></div>
 			<div id="minSet2_2" class="circle"></div>
 			<div id="minSet2_3" class="circle"></div>
 		</div>
-	
-		<div id="sec">
-			<div id="sec_0" class="circle"></div>
-		</div>
-		
-		<div id="time">
-			<div id="time_0" class="time"></div>
+
+		<div id="time" class="row">
+			
 		</div>
 	</div>
 	<script src="jquery-1.11.1.min.js"></script>
@@ -58,11 +57,14 @@
 
 				$.each(data, function(key, val) {
 					var n = val.length;
-					
-					for (var i = 0; i < n; i++) {
-						var item = $("#"+key+"_"+i);
-						item.removeClass("R Y O");
-						item.addClass(val.charAt(i));
+					if(key === "time"){
+						$("#time").html(val);
+					} else {
+						for (var i = 0; i < n; i++) {
+							var item = $("#"+key+"_"+i);
+							item.removeClass("R Y O");
+							item.addClass(val.charAt(i));
+						}
 					}
 				});
 
