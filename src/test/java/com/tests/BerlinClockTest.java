@@ -3,10 +3,10 @@ package com.tests;
 import org.junit.Assert;
 import org.junit.Test;
 
-import berlin.clock.BerlinHeuer;
-import berlin.clock.BerlinHeuerParser;
+import berlin.clock.BerlinClock;
+import berlin.clock.BerlinClockBuilder;
 
-public class BerlinHeuerConverterTest {
+public class BerlinClockTest {
 	
 
 	
@@ -38,35 +38,35 @@ public class BerlinHeuerConverterTest {
 	
 	@Test
 	public void testParse_hhmmss() {
-		Assert.assertArrayEquals(VALID_TIME_RTRN_1, BerlinHeuerParser.parse(VALID_TIME_1));
-		Assert.assertArrayEquals(VALID_TIME_RTRN_2, BerlinHeuerParser.parse(VALID_TIME_2));
-		Assert.assertArrayEquals(VALID_TIME_RTRN_3, BerlinHeuerParser.parse(VALID_TIME_3));
+		Assert.assertArrayEquals(VALID_TIME_RTRN_1, BerlinClockBuilder.parse(VALID_TIME_1));
+		Assert.assertArrayEquals(VALID_TIME_RTRN_2, BerlinClockBuilder.parse(VALID_TIME_2));
+		Assert.assertArrayEquals(VALID_TIME_RTRN_3, BerlinClockBuilder.parse(VALID_TIME_3));
 		
-		Assert.assertArrayEquals(INVALID_FMT_RTRN, BerlinHeuerParser.parse(INVALID_FMT_1));
-		Assert.assertArrayEquals(INVALID_FMT_RTRN, BerlinHeuerParser.parse(INVALID_FMT_2));
-		Assert.assertArrayEquals(INVALID_FMT_RTRN, BerlinHeuerParser.parse(INVALID_FMT_3));
+		Assert.assertArrayEquals(INVALID_FMT_RTRN, BerlinClockBuilder.parse(INVALID_FMT_1));
+		Assert.assertArrayEquals(INVALID_FMT_RTRN, BerlinClockBuilder.parse(INVALID_FMT_2));
+		Assert.assertArrayEquals(INVALID_FMT_RTRN, BerlinClockBuilder.parse(INVALID_FMT_3));
 		
-		Assert.assertArrayEquals(INVALID_HRS_RTRN, BerlinHeuerParser.parse(INVALID_HRS_VALUE));
+		Assert.assertArrayEquals(INVALID_HRS_RTRN, BerlinClockBuilder.parse(INVALID_HRS_VALUE));
 
-		Assert.assertArrayEquals(INVALID_MIN_RTRN, BerlinHeuerParser.parse(INVALID_MIN_VALUE));
+		Assert.assertArrayEquals(INVALID_MIN_RTRN, BerlinClockBuilder.parse(INVALID_MIN_VALUE));
 		
-		Assert.assertArrayEquals(INVALID_SEC_RTRN, BerlinHeuerParser.parse(INVALID_SEC_VALUE));
+		Assert.assertArrayEquals(INVALID_SEC_RTRN, BerlinClockBuilder.parse(INVALID_SEC_VALUE));
 	}
 	
 	@Test
 	public void testBerlinSeconds() {
-		Assert.assertEquals(1, BerlinHeuerParser.getSeconds(0));
-		Assert.assertEquals(0, BerlinHeuerParser.getSeconds(59));
+		Assert.assertEquals(1, BerlinClockBuilder.getSeconds(0));
+		Assert.assertEquals(0, BerlinClockBuilder.getSeconds(59));
 	}
 	
 	@Test
 	public void testBerlinTimeString(){
-		BerlinHeuer expected1 = new BerlinHeuer(VALID_TIME_1, "O RROO RRRO YYROOOOOOOO YYOO", false);
-		BerlinHeuer expected2 = new BerlinHeuer(VALID_TIME_2, "O RRRR RRRO YYRYYRYYRYY YYYY", false);
-		BerlinHeuer expected3 = new BerlinHeuer(VALID_TIME_3, "Y RRRR RRRR OOOOOOOOOOO OOOO", false);
+		BerlinClock expected1 = new BerlinClock(VALID_TIME_1, "RROO", "RRRO", "YYROOOOOOOO", "YYOO", "O");
+		BerlinClock expected2 = new BerlinClock(VALID_TIME_2, "RRRR", "RRRO", "YYRYYRYYRYY", "YYYY", "O");
+		BerlinClock expected3 = new BerlinClock(VALID_TIME_3, "RRRR", "RRRR", "OOOOOOOOOOO", "OOOO", "Y");
 		
-		Assert.assertEquals(expected1.toString(), BerlinHeuerParser.toBerlinString(VALID_TIME_1).toString());
-		Assert.assertEquals(expected2.toString(), BerlinHeuerParser.toBerlinString(VALID_TIME_2).toString());
-		Assert.assertEquals(expected3.toString(), BerlinHeuerParser.toBerlinString(VALID_TIME_3).toString());
+		Assert.assertEquals(expected1.toString(), BerlinClockBuilder.build(VALID_TIME_1).toString());
+		Assert.assertEquals(expected2.toString(), BerlinClockBuilder.build(VALID_TIME_2).toString());
+		Assert.assertEquals(expected3.toString(), BerlinClockBuilder.build(VALID_TIME_3).toString());
 	}
 }

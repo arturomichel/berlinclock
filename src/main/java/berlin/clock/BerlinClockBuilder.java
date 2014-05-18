@@ -1,42 +1,25 @@
 package berlin.clock;
 
-import berlin.clock.BerlinHeuer;
+import berlin.clock.BerlinClock;
 
-public class BerlinHeuerParser {
+public class BerlinClockBuilder {
 
 
-	public static BerlinHeuer toBerlinString(final String HHMMSS){
+	public static BerlinClock build(final String HHMMSS){
+	
 		Integer[] hhmmss = parse(HHMMSS);
-		StringBuilder sb = new StringBuilder();
-
-		if(hhmmss[2] != null) {
-			sb.append(toBerlinString(getSeconds(hhmmss[2]),BerlinHeuerParts.SEC));
-			sb.append(" ");
-		} else {
-			sb.append("-");
-		}
-
-		if(hhmmss[0] != null){
-			sb.append(toBerlinString(getUpperRow(hhmmss[0]),BerlinHeuerParts.HOURS_5));
-			sb.append(" ");
-			sb.append(toBerlinString(getLowerRow(hhmmss[0]),BerlinHeuerParts.HOURS_1));
-			sb.append(" ");
-		} else {
-			sb.append("- ");
-		}
-
-		if(hhmmss[1] != null){
-			sb.append(toBerlinString(getUpperRow(hhmmss[1]),BerlinHeuerParts.MIN_5));
-			sb.append(" ");
-			sb.append(toBerlinString(getLowerRow(hhmmss[1]),BerlinHeuerParts.MIN_1));
-		} else {
-			sb.append("-");
-		}
-
-		return new BerlinHeuer(HHMMSS, sb.toString());
+		BerlinClock bh = new BerlinClock(HHMMSS);
+		
+		bh.setHours20(setLights(getUpperSet(hhmmss[0]), BerlinClockSets.HOURS_5));
+		bh.setHours1(setLights(getLowerSet(hhmmss[0]), BerlinClockSets.HOURS_1));
+		bh.setMin5(setLights(getUpperSet(hhmmss[1]), BerlinClockSets.MIN_5));
+		bh.setMin1(setLights(getLowerSet(hhmmss[1]), BerlinClockSets.MIN_1));
+		bh.setSec(setLights(getSeconds(hhmmss[2]), BerlinClockSets.SEC));
+		
+		return bh;
 	}
 
-	private static String toBerlinString(final int on, BerlinHeuerParts part){
+	private static String setLights(final int on, BerlinClockSets part){
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0; i < part.getPadding(); i++){
 			if(i < on){
@@ -52,11 +35,11 @@ public class BerlinHeuerParser {
 		return sb.toString();
 	}
 
-	private static int getUpperRow(final int value){
+	private static int getUpperSet(final int value){
 		return value/5;
 	}
 
-	private static int getLowerRow(final int value){
+	private static int getLowerSet(final int value){
 		return  value - ((value/5) * 5);
 	}
 

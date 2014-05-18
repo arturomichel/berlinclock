@@ -1,6 +1,6 @@
 package berlin.clock;
 
-public enum BerlinHeuerParts {
+public enum BerlinClockSets {
 	
 	HOURS_5(false, 4, Colours.RED, Colours.RED, Colours.OFF),
 	HOURS_1(false, 4, Colours.RED, Colours.RED, Colours.OFF),
@@ -18,9 +18,7 @@ public enum BerlinHeuerParts {
 	
 	private String offColour;
 	
-	
-	
-	private BerlinHeuerParts(boolean markQuarters, int padding, String onColour, String quarterColour, String offColour) {
+	private BerlinClockSets(boolean markQuarters, int padding, String onColour, String quarterColour, String offColour) {
 		this.markQuarters = markQuarters;
 		this.padding = padding;
 		this.onColour = onColour;
