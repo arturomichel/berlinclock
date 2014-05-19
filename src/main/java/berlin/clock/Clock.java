@@ -43,4 +43,8 @@ public class Clock {
 	public BerlinClock getBerlinClock() {
 		return BerlinClockBuilder.build(getTime());
 	}
+	
+	public BerlinClock getBerlinClock(final String time){
+		return BerlinClockBuilder.build(time);
+	}
 }

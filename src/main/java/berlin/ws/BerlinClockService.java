@@ -19,12 +19,20 @@ public class BerlinClockService {
 	@Path("/getTime")
 	@Consumes("application/json; charset=utf-8")
 	@Produces("application/json; charset=utf-8")
-	public Response getTime(@DefaultValue(value="") @QueryParam("offset") String offset) {
+	public Response getTime(@DefaultValue(value="") @QueryParam("offset") String offset,
+			@DefaultValue(value="") @QueryParam("time") String time) {
 		if(!"".equals(offset)) {
 			Clock.getInstance().setTimeZone(offset);
 		}
 		
-		BerlinClock berlin = Clock.getInstance().getBerlinClock();
+		BerlinClock berlin = null;
+		
+		if(!"".equals(time)) {
+			berlin = Clock.getInstance().getBerlinClock(time);
+		} else {
+			berlin = Clock.getInstance().getBerlinClock();
+		}
+		
 		return Response.status(Status.OK).entity(berlin).build();
 		
 	}

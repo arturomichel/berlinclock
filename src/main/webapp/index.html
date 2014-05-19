@@ -47,28 +47,84 @@
 		</div>
 	</div>
 
+	<div id="givenTime">
+		<input id="userTime" onkeyup="updateClock()">
+		<div id="givenTimeDisplay">
+			<div id="givenTimesec" class="row">
+				<div id="givenTimesec_0" class="circle"></div>
+			</div>
+			<div id="givenTimehoursSet1" class="row">
+				<div id="givenTimehoursSet1_0" class="circle"></div>
+				<div id="givenTimehoursSet1_1" class="circle"></div>
+				<div id="givenTimehoursSet1_2" class="circle"></div>
+				<div id="givenTimehoursSet1_3" class="circle"></div>
+			</div>
+			<div id="givenTimehoursSet2" class="row">
+				<div id="givenTimehoursSet2_0" class="circle"></div>
+				<div id="givenTimehoursSet2_1" class="circle"></div>
+				<div id="givenTimehoursSet2_2" class="circle"></div>
+				<div id="givenTimehoursSet2_3" class="circle"></div>
+			</div>
+			<div id="givenTimeminSet1" class="row">
+				<div id="givenTimeminSet1_0" class="circle"></div>
+				<div id="givenTimeminSet1_1" class="circle"></div>
+				<div id="givenTimeminSet1_2" class="circle"></div>
+				<div id="givenTimeminSet1_3" class="circle"></div>
+				<div id="givenTimeminSet1_4" class="circle"></div>
+				<div id="givenTimeminSet1_5" class="circle"></div>
+				<div id="givenTimeminSet1_6" class="circle"></div>
+				<div id="givenTimeminSet1_7" class="circle"></div>
+				<div id="givenTimeminSet1_8" class="circle"></div>
+				<div id="givenTimeminSet1_9" class="circle"></div>
+				<div id="givenTimeminSet1_10" class="circle"></div>
+			</div>
+			<div id="givenTimeminSet2" class="row">
+				<div id="givenTimeminSet2_0" class="circle"></div>
+				<div id="givenTimeminSet2_1" class="circle"></div>
+				<div id="givenTimeminSet2_2" class="circle"></div>
+				<div id="givenTimeminSet2_3" class="circle"></div>
+			</div>
+		</div>
+	</div>
 	<script src="jquery-1.11.1.min.js"></script>
 	<script>
+	
+		function updateClock(){
+			var userTime = $("#userTime").val();
+			if(userTime.length == 8){
+				$.getJSON("clock/berlinClock/getTime?time="+userTime, function(data){
+					updateCurrentTime(data, "givenTime");
+					$("#givenTimeDisplay").show("slow");
+				});
+				
+			} else {
+				$("#givenTimeDisplay").hide("slow");
+			}
+		}
+		
 		$(document).ready(function() {
-			setInterval(function(){getTime()},1000);
+			setInterval(function(){getCurrentTime()},1000);
+			
 		});
 		
-		function getTime(){
-			$.getJSON("clock/berlinClock/getTime", function(data) {
-
-				$.each(data, function(key, val) {
+		function updateCurrentTime(jsonTime, containerKey){
+			$.each(jsonTime, function(key, val) {
 					var n = val.length;
 					if(key === "time"){
 						$("#time").html(val);
 					} else {
 						for (var i = 0; i < n; i++) {
-							var item = $("#"+key+"_"+i);
+							var item = $("#"+containerKey+key+"_"+i);
 							item.removeClass("R Y O");
 							item.addClass(val.charAt(i));
 						}
 					}
 				});
-
+		}
+		
+		function getCurrentTime(){
+			$.getJSON("clock/berlinClock/getTime", function done(data) {
+				updateCurrentTime(data,"");
 			});
 		}
 	</script>

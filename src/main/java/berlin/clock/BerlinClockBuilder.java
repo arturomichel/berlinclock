@@ -8,7 +8,7 @@ public class BerlinClockBuilder {
 	private static final int MAX_MIN = 59;
 
 	public static BerlinClock build(final String HHMMSS) {
-	
+
 		Integer[] hhmmss = parse(HHMMSS);
 		BerlinClock bh = new BerlinClock(HHMMSS);
 		
