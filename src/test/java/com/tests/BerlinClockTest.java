@@ -10,28 +10,28 @@ public class BerlinClockTest {
 	
 
 	
-	private static String VALID_TIME_1 = "13:17:01";
-	private static Integer[] VALID_TIME_RTRN_1 = {13,17,1};
+	private static final String VALID_TIME_1 = "13:17:01";
+	private static final Integer[] VALID_TIME_RTRN_1 = {13, 17, 1};
 	
-	private static String VALID_TIME_2 = "23:59:59";
-	private static Integer[] VALID_TIME_RTRN_2 = {23,59,59};
+	private static final String VALID_TIME_2 = "23:59:59";
+	private static final Integer[] VALID_TIME_RTRN_2 = {23, 59, 59};
 	
-	private static String VALID_TIME_3 = "24:00:00";
-	private static Integer[] VALID_TIME_RTRN_3 = {24,00,00};
+	private static final String VALID_TIME_3 = "24:00:00";
+	private static final Integer[] VALID_TIME_RTRN_3 = {24, 00, 00};
 	
-	private static String INVALID_FMT_1 = "1:12:12";
-	private static String INVALID_FMT_2 = "12:1:12";
-	private static String INVALID_FMT_3 = "12:12:1";
-	private static Integer[] INVALID_FMT_RTRN = {null,null,null};
+	private static final String INVALID_FMT_1 = "1:12:12";
+	private static final String INVALID_FMT_2 = "12:1:12";
+	private static final String INVALID_FMT_3 = "12:12:1";
+	private static final Integer[] INVALID_FMT_RTRN = {null, null, null};
 	
-	private static String INVALID_HRS_VALUE = "25:17:01";
-	private static Integer[] INVALID_HRS_RTRN = {null,17,01};
+	private static final String INVALID_HRS_VALUE = "25:17:01";
+	private static final Integer[] INVALID_HRS_RTRN = {null, 17, 01};
 	
-	private static String INVALID_MIN_VALUE = "13:60:01";
-	private static Integer[] INVALID_MIN_RTRN = {null,null,null};
+	private static final String INVALID_MIN_VALUE = "13:60:01";
+	private static final Integer[] INVALID_MIN_RTRN = {null, null, null};
 	
-	private static String INVALID_SEC_VALUE = "13:17:60";
-	private static Integer[] INVALID_SEC_RTRN= {null,null,null};
+	private static final String INVALID_SEC_VALUE = "13:17:60";
+	private static final Integer[] INVALID_SEC_RTRN= {null, null, null};
 	
 	
 	
@@ -60,7 +60,7 @@ public class BerlinClockTest {
 	}
 	
 	@Test
-	public void testBerlinTimeString(){
+	public void testBerlinTimeString() {
 		BerlinClock expected1 = new BerlinClock(VALID_TIME_1, "RROO", "RRRO", "YYROOOOOOOO", "YYOO", "O");
 		BerlinClock expected2 = new BerlinClock(VALID_TIME_2, "RRRR", "RRRO", "YYRYYRYYRYY", "YYYY", "O");
 		BerlinClock expected3 = new BerlinClock(VALID_TIME_3, "RRRR", "RRRR", "OOOOOOOOOOO", "OOOO", "Y");

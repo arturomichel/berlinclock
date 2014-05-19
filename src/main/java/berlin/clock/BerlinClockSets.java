@@ -4,9 +4,9 @@ public enum BerlinClockSets {
 	
 	HOURS_5(false, 4, Colours.RED, Colours.RED, Colours.OFF),
 	HOURS_1(false, 4, Colours.RED, Colours.RED, Colours.OFF),
-	MIN_5(true,11, Colours.YELLOW, Colours.RED, Colours.OFF),
-	MIN_1(false,4, Colours.YELLOW, Colours.YELLOW, Colours.OFF),
-	SEC(false,1, Colours.YELLOW, Colours.RED, Colours.OFF);
+	MIN_5(true, 11, Colours.YELLOW, Colours.RED, Colours.OFF),
+	MIN_1(false, 4, Colours.YELLOW, Colours.YELLOW, Colours.OFF),
+	SEC(false, 1, Colours.YELLOW, Colours.RED, Colours.OFF);
 	
 	private boolean markQuarters;
 	
@@ -18,7 +18,8 @@ public enum BerlinClockSets {
 	
 	private String offColour;
 	
-	private BerlinClockSets(boolean markQuarters, int padding, String onColour, String quarterColour, String offColour) {
+	private BerlinClockSets(final boolean markQuarters, final int padding,
+			final String onColour, final String quarterColour, final String offColour) {
 		this.markQuarters = markQuarters;
 		this.padding = padding;
 		this.onColour = onColour;
@@ -26,8 +27,8 @@ public enum BerlinClockSets {
 		this.offColour = offColour;
 	}
 
-	public boolean isMarkQuarters() {
-		return markQuarters;
+	public boolean isMarkQuarters(int i) {
+		return markQuarters && i % 3 == 2;
 	}
 
 	public int getPadding() {

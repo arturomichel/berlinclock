@@ -10,11 +10,15 @@ in Berlin format can be seen in the following url.
 
 http://localhost:8080/bc/
 
-Alternatively, the service getTime is available to retrieve the Berlin representation of
-the server time or any time in the correct format.
+Alternatively, the service getTime is available to retrieve the Berlin time representations using a gmt offset.
+To set an alternative time zone uset the offset param in the web service call.
 
-http://localhost:8080/bc/clock/berlinClock/getTime
-http://localhost:8080/bc/clock/berlinClock/getTime?time=12:12:12
+http://localhost:8080/bc/clock/berlinClock/getTime?offset=-10
+
+Once the offset has been set you can go back to the graphical representation of the clock using the new time.
+
+http://localhost:8080/bc
+
 
 A Berlin time format can also be obtained from the command line using the following
 maven goal.

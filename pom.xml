@@ -41,7 +41,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>berlin.clock.Time</mainClass>
+					<mainClass>berlin.clock.Main</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
