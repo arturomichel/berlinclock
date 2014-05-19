@@ -17,6 +17,8 @@ To set an alternative time zone use the offset param in the web service call.
 
 http://localhost:8080/bc/clock/berlinClock/getTime?offset=-10
 
+This call affects the server clock; all users using the clock will see the updated time. 
+
 Once the offset has been set you can go back to the graphical representation of the clock using the new time.
 
 http://localhost:8080/bc
