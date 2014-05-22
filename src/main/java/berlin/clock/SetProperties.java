@@ -1,6 +1,6 @@
 package berlin.clock;
 
-public enum BerlinClockSets {
+public enum SetProperties {
 	
 	HOURS_5(false, 4, Colours.RED, Colours.RED, Colours.OFF),
 	HOURS_1(false, 4, Colours.RED, Colours.RED, Colours.OFF),
@@ -18,7 +18,7 @@ public enum BerlinClockSets {
 	
 	private String offColour;
 	
-	private BerlinClockSets(final boolean markQuarters, final int padding,
+	private SetProperties(final boolean markQuarters, final int padding,
 			final String onColour, final String quarterColour, final String offColour) {
 		this.markQuarters = markQuarters;
 		this.padding = padding;

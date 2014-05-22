@@ -12,16 +12,20 @@ public class BerlinClockBuilder {
 		Integer[] hhmmss = parse(HHMMSS);
 		BerlinClock bh = new BerlinClock(HHMMSS);
 		
-		bh.setHoursSet1(setLights(getUpperSet(hhmmss[0]), BerlinClockSets.HOURS_5));
-		bh.setHoursSet2(setLights(getLowerSet(hhmmss[0]), BerlinClockSets.HOURS_1));
-		bh.setMinSet1(setLights(getUpperSet(hhmmss[1]), BerlinClockSets.MIN_5));
-		bh.setMinSet2(setLights(getLowerSet(hhmmss[1]), BerlinClockSets.MIN_1));
-		bh.setSec(setLights(getSeconds(hhmmss[2]), BerlinClockSets.SEC));
+		bh.setHoursSets(setLights(getCompleteSets(hhmmss[0]), SetProperties.HOURS_5));
+		bh.setHoursPartialSet(setLights(getPartialSets(hhmmss[0]), SetProperties.HOURS_1));
+		
+		bh.setMinSets(setLights(getCompleteSets(hhmmss[1]), SetProperties.MIN_5));
+		bh.setMinPartialSet(setLights(getPartialSets(hhmmss[1]), SetProperties.MIN_1));
+		
+		bh.setSec(setLights(getSeconds(hhmmss[2]), SetProperties.SEC));
+		
+		bh.setTimeZone(Clock.getInstance().getTimeZone());
 		
 		return bh;
 	}
 
-	private static String setLights(final int on, BerlinClockSets part) {
+	private static String setLights(final int on, SetProperties part) {
 		
 		StringBuilder sb = new StringBuilder();
 		
@@ -40,11 +44,11 @@ public class BerlinClockBuilder {
 		return sb.toString();
 	}
 	
-	private static int getUpperSet(final int value) {
+	private static int getCompleteSets(final int value) {
 		return value / SET_SIZE;
 	}
 
-	private static int getLowerSet(final int value) {
+	private static int getPartialSets(final int value) {
 		return  value - ((value / SET_SIZE) * SET_SIZE);
 	}
 
@@ -57,7 +61,7 @@ public class BerlinClockBuilder {
 
 		Integer[] iHHMMSS = new Integer[3];
 		// restricts format, digits and some values
-		if(hhmmss.matches("([0-2][0-9]):([0-5][0-9]):([0-5][0-9])")) {
+		if(hhmmss.matches("([0-2]{0,1}[0-9]):([0-5]{0,1}[0-9]):([0-5]{0,1}[0-9])")) {
 
 			String[] HHMMSS = hhmmss.split(":");
 

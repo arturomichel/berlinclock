@@ -19,10 +19,10 @@ public class BerlinClockTest {
 	private static final String VALID_TIME_3 = "24:00:00";
 	private static final Integer[] VALID_TIME_RTRN_3 = {24, 00, 00};
 	
-	private static final String INVALID_FMT_1 = "1:12:12";
-	private static final String INVALID_FMT_2 = "12:1:12";
-	private static final String INVALID_FMT_3 = "12:12:1";
-	private static final Integer[] INVALID_FMT_RTRN = {null, null, null};
+	private static final String INVALID_HOUR_FMT = "30:12:12";
+	private static final String INVALID_MINUTE_FMT = "12:60:12";
+	private static final String INVALID_SECOND_FMT = "12:12:60";
+	private static final Integer[] FAILS_REGEX_RTRN = {null, null, null};
 	
 	private static final String INVALID_HRS_VALUE = "25:17:01";
 	private static final Integer[] INVALID_HRS_RTRN = {null, 17, 01};
@@ -42,9 +42,9 @@ public class BerlinClockTest {
 		Assert.assertArrayEquals(VALID_TIME_RTRN_2, BerlinClockBuilder.parse(VALID_TIME_2));
 		Assert.assertArrayEquals(VALID_TIME_RTRN_3, BerlinClockBuilder.parse(VALID_TIME_3));
 		
-		Assert.assertArrayEquals(INVALID_FMT_RTRN, BerlinClockBuilder.parse(INVALID_FMT_1));
-		Assert.assertArrayEquals(INVALID_FMT_RTRN, BerlinClockBuilder.parse(INVALID_FMT_2));
-		Assert.assertArrayEquals(INVALID_FMT_RTRN, BerlinClockBuilder.parse(INVALID_FMT_3));
+		Assert.assertArrayEquals(FAILS_REGEX_RTRN, BerlinClockBuilder.parse(INVALID_HOUR_FMT));
+		Assert.assertArrayEquals(FAILS_REGEX_RTRN, BerlinClockBuilder.parse(INVALID_MINUTE_FMT));
+		Assert.assertArrayEquals(FAILS_REGEX_RTRN, BerlinClockBuilder.parse(INVALID_SECOND_FMT));
 		
 		Assert.assertArrayEquals(INVALID_HRS_RTRN, BerlinClockBuilder.parse(INVALID_HRS_VALUE));
 

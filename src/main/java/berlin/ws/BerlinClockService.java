@@ -17,24 +17,33 @@ public class BerlinClockService {
 
 	@GET
 	@Path("/getTime")
-	@Consumes("application/json; charset=utf-8")
 	@Produces("application/json; charset=utf-8")
-	public Response getTime(@DefaultValue(value="") @QueryParam("offset") String offset,
-			@DefaultValue(value="") @QueryParam("time") String time) {
-		if(!"".equals(offset)) {
-			Clock.getInstance().setTimeZone(offset);
-		}
+	public Response getTime(@DefaultValue(value="") @QueryParam("time") String time) {
 		
 		BerlinClock berlin = null;
 		
 		if(!"".equals(time)) {
-			berlin = Clock.getInstance().getBerlinClock(time);
+			berlin = Clock.getInstance().getTimeBerlinFormat(time);
 		} else {
-			berlin = Clock.getInstance().getBerlinClock();
+			berlin = Clock.getInstance().getTimeBerlinFormat();
 		}
 		
 		return Response.status(Status.OK).entity(berlin).build();
 		
 	}
 	
+	@GET
+	@Path("/setOffset")
+	@Produces("application/json; charset=utf-8")
+	public Response setOffset(@DefaultValue(value="") @QueryParam("offset") String offset) {
+		
+		if(!"".equals(offset)) {
+			Clock.getInstance().setOffset(offset);
+		}
+		
+		String message = Clock.getInstance().getOffset();
+		
+		return Response.status(Status.OK).entity(message).build();
+		
+	}
 }

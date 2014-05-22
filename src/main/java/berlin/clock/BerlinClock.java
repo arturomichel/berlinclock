@@ -1,5 +1,7 @@
 package berlin.clock;
 
+import java.util.TimeZone;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -7,16 +9,17 @@ public class BerlinClock {
 
 	private String time;
 	
-	private String hoursSet1;
+	private String hoursSets;
 	
-	private String hoursSet2;
+	private String hoursPartialSet;
 	
-	private String minSet1;
+	private String minSets;
 	
-	private String minSet2;
+	private String minPartialSet;
 	
 	private String sec;
 	
+	private String timeZone;
 
 	public BerlinClock() {
 		super();
@@ -26,11 +29,12 @@ public class BerlinClock {
 			final String minSet1, final String minSet2, final String sec) {
 		super();
 		this.time = time;
-		this.hoursSet1 = hoursSet1;
-		this.hoursSet2 = hoursSet2;
-		this.minSet1 = minSet1;
-		this.minSet2 = minSet2;
+		this.hoursSets = hoursSet1;
+		this.hoursPartialSet = hoursSet2;
+		this.minSets = minSet1;
+		this.minPartialSet = minSet2;
 		this.sec = sec;
+		this.timeZone = TimeZone.getDefault().getDisplayName();
 	}
 
 	public BerlinClock(final String time){
@@ -41,54 +45,61 @@ public class BerlinClock {
 		return time;
 	}
 
-	public void setTime(final String time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 
-	public String getHoursSet1() {
-		return hoursSet1;
+	public String getHoursSets() {
+		return hoursSets;
 	}
 
-	public void setHoursSet1(final String hoursSet1) {
-		this.hoursSet1 = hoursSet1;
+	public void setHoursSets(String hoursSets) {
+		this.hoursSets = hoursSets;
 	}
 
-	public String getHoursSet2() {
-		return hoursSet2;
+	public String getHoursPartialSet() {
+		return hoursPartialSet;
 	}
 
-	public void setHoursSet2(final String hoursSet2) {
-		this.hoursSet2 = hoursSet2;
+	public void setHoursPartialSet(String hoursPartialSet) {
+		this.hoursPartialSet = hoursPartialSet;
 	}
 
-	public String getMinSet1() {
-		return minSet1;
+	public String getMinSets() {
+		return minSets;
 	}
 
-	public void setMinSet1(final String minSet1) {
-		this.minSet1 = minSet1;
+	public void setMinSets(String minSets) {
+		this.minSets = minSets;
 	}
 
-	public String getMinSet2() {
-		return minSet2;
+	public String getMinPartialSet() {
+		return minPartialSet;
 	}
 
-	public void setMinSet2(final String minSet2) {
-		this.minSet2 = minSet2;
+	public void setMinPartialSet(String minPartialSet) {
+		this.minPartialSet = minPartialSet;
 	}
 
 	public String getSec() {
 		return sec;
 	}
 
-
-	public void setSec(final String sec) {
+	public void setSec(String sec) {
 		this.sec = sec;
+	}
+
+	public String getTimeZone() {
+		return timeZone;
+	}
+
+	public void setTimeZone(String timeZone) {
+		this.timeZone = timeZone;
 	}
 
 	@Override
 	public String toString() {
-		return "BerlinClock [time=" + time + ", hoursSet1=" + hoursSet1 + ", hoursSet2=" + hoursSet2 + ", minSet1=" + minSet1 + ", minSet2=" + minSet2 + ", sec=" + sec + "]";
+		return "BerlinClock [time=" + time + ", hoursSets=" + hoursSets + ", hoursPartialSet=" + hoursPartialSet + ", minSets=" + minSets + ", minPartialSet=" + minPartialSet + ", sec=" + sec + ", timeZone=" + timeZone + "]";
 	}
-	
+
 }
