@@ -94,11 +94,11 @@
 			if(userTime.length == 8){
 				$.getJSON("clock/berlinClock/getTime?time="+userTime, function(data){
 					updateCurrentTime(data, "givenTime");
-					$("#givenTimeDisplay").show("slow");
+					$("#givenTimeDisplay").show();
 				});
 				
 			} else {
-				$("#givenTimeDisplay").hide("slow");
+				$("#givenTimeDisplay").hide();
 			}
 		}
 		
